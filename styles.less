@@ -1,10 +1,35 @@
-@color-primary: green;
+@green: #299E00;
+@green-light: #6AF531;
+@green-dark: #00A333;
+@red: #BB0606;
+@red-light: #EB5631;
+@red-dark: #901700;
+@button: #284CC9;
+@titles: #98A1A8;
+@caption: #919AA0;
+@type: #3E5769;
 
 body {
-    background-color: @color-primary;
+    font-family: 'Open Sans', sans-serif;
 }
 
 #app {
-    background-color: orange;
-    height: 100px;
+    background-color: @green;
+    min-height: 100px;
+}
+
+.button {
+    background-color: @button;
+}
+
+.title {
+    color: @titles;
+}
+
+.caption {
+    color: @caption;
+}
+
+.type {
+    color: @type;
 }
