@@ -10,13 +10,13 @@
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/underscore@1.9.1/underscore-min.js" integrity="sha256-G7A4JrJjJlFqP0yamznwPjAApIKPkadeHfyIwiaa9e0=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/backbone@1.4.0/backbone-min.js" integrity="sha256-OO+KD/bMG3Dr57LO27ZhYL2zYhLP1CJIkCXUUDnFNuc=" crossorigin="anonymous"></script>
+        <script src="js/models/stockquote.js"></script>
     </head>
     <body>
-        external dependencies test
+        test stock quote model
         <script>
-            console.log(jQuery.fn.jquery);
-            console.log(_.VERSION);
-            console.log(Backbone.VERSION);
+            let sq = new StockQuote({symbol: "GOOG", name: "Alphabet Inc."});
+            console.log(sq.get("symbol"));
         </script>
     </body>
 </html>
