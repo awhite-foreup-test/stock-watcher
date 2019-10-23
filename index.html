@@ -6,17 +6,32 @@
             stock-watcher
         </title>
         <link rel="stylesheet/less" type="text/css" href="styles.less"  crossorigin="anonymous" />
+    </head>
+    <body>
+        <div id="app"></div>
+
+        <script type="text/template" id="stockquoteview-template">
+            Name: <%- name %>
+            <br />
+            Symbol: <%- symbol %>
+        </script>
+
+        <!-- LESS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js" crossorigin="anonymous"></script>
+
+        <!-- BACKBONE JS-->
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/underscore@1.9.1/underscore-min.js" integrity="sha256-G7A4JrJjJlFqP0yamznwPjAApIKPkadeHfyIwiaa9e0=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/backbone@1.4.0/backbone-min.js" integrity="sha256-OO+KD/bMG3Dr57LO27ZhYL2zYhLP1CJIkCXUUDnFNuc=" crossorigin="anonymous"></script>
+
+        <!-- MODELS -->
         <script src="js/models/stockquote.js"></script>
-    </head>
-    <body>
-        test stock quote model
-        <script>
-            let sq = new StockQuote({symbol: "GOOG", name: "Alphabet Inc."});
-            console.log(sq.get("symbol"));
-        </script>
+        <!-- COLLECTIONS -->
+        <script src="js/collections/stockquotes.js"></script>
+        <!-- VIEWS -->
+        <script src="js/views/stockquoteview.js"></script>
+        <script src="js/views/appview.js"></script>
+
+        <script src="js/app.js"></script>
     </body>
 </html>
