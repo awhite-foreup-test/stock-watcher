@@ -22,7 +22,9 @@ var app = app || {};
         },
         add: function () {
             var sq = new app.StockQuote({symbol: this.model.get("symbol"), name: this.model.get("name")});
-            app.stockQuotes.add(sq);
+            sq.fetch().then(function() {
+                app.stockQuotes.add(sq);
+            });
         }
     });
 })(jQuery);

@@ -22,12 +22,12 @@ var app = app || {};
             let quote = response["Global Quote"];
             return {
                 symbol: quote["01. symbol"],
-                open: quote["02. open"],
-                high: quote["03. high"],
-                low: quote["04. low"],
-                price: quote["05. price"],
-                change: quote["09. change"],
-                changePercent: quote["10. change percent"]
+                open: Number.parseFloat(quote["02. open"]),
+                high: Number.parseFloat(quote["03. high"]),
+                low: Number.parseFloat(quote["04. low"]),
+                price: Number.parseFloat(quote["05. price"]),
+                change: Number.parseFloat(quote["09. change"]),
+                changePercent: Number.parseFloat(quote["10. change percent"])
             }
         }
     });

@@ -19,7 +19,7 @@ var app = app || {};
         },
         parse: function (response, options) {
             console.log(response);
-            if (response['bestMatches'].length < 1) {
+            if (!(response.hasOwnProperty("bestMatches") && response['bestMatches'].length > 0)) {
                 return;
             }
             let bestMatch = response["bestMatches"][0];
