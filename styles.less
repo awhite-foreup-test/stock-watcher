@@ -15,6 +15,8 @@
     desktop: 1024px;
 }
 
+@triangle-altitude: 6px;
+
 body {
     font-family: 'Open Sans', sans-serif;
     background-color: #f8f8f8;
@@ -83,38 +85,112 @@ body {
     }
 }
 
+.stockquotelist {
+    display: grid;
+    row-gap: 10px;
+    column-gap: 10px;
+    grid-template-columns: 1fr;
+
+    @media (min-width: @sizes[tablet]) {
+        grid-template-columns: 1fr 1fr;
+    }
+    @media (min-width: @sizes[desktop]) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
 .stockquote {
     display: grid;
-    grid-template-rows: 50% 50%;
-    grid-template-columns: 60% 40%;
-    grid-auto-flow: column;
-    background-color: white;
-    padding: 20px 25px 25px;
-    box-sizing: border-box;
     border-radius: 3px;
 
+    @media (min-width: @sizes[tablet]) {
+        grid-template-columns: 2fr 5fr;
+    }
+    @media (min-width: @sizes[desktop]) {
+        grid-template-columns: 1fr 5fr;
+    }
+
     &.trendingUp {
-        & > .groupChange {
+        & .groupChange {
             color: @green;
-            & > .arrowUp {
+            & .arrowUp {
                 display: inline;
+            }
+        }
+        & .boxplot {
+            background-image: linear-gradient(@green-light, @green-dark);
+            & .verticalrule {
+                background-image: linear-gradient(white, @green-dark);
             }
         }
     }
 
     &.trendingDown {
-        & > .groupChange {
+        & .groupChange {
             color: @red;
-            & > .arrowDown {
+            & .arrowDown {
                 display: inline;
+            }
+        }
+        & .boxplot {
+            background-image: linear-gradient(@red-light, @red-dark);
+            & .verticalrule {
+                background-image: linear-gradient(@red-dark, white);
             }
         }
     }
 
-    &>span {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+    .boxplot {
+        display: none;
+        color: white;
+        padding: 15px;
+        grid: ~"1fr 1fr / 25% 5% 10% auto";
+        font-size: 0.9em;
+        font-weight: 600;
+
+        @media (min-width: @sizes[tablet]) {
+            display: grid;
+        }
+
+        & .high {
+            grid-column: ~"4 / 5";
+        }
+
+        & .low {
+            grid-column: ~"4 / 5";
+            display: flex;
+            align-items: end;
+        }
+    }
+
+    .verticalrule {
+        width: 3px;
+        grid-column: ~"2 / 3";
+        grid-row: ~"1 / 3";
+    }
+    .triangle {
+        height: 0;
+        border: @triangle-altitude solid transparent;
+        border-left: @triangle-altitude * 2 solid white;
+        margin-left: @triangle-altitude * -2;
+        position: relative;
+    }
+
+    .data {
+        display: grid;
+        grid-template-columns: 60% 40%;
+        background-color: white;
+        min-width: 0;
+        padding: 20px;
+
+        @media (min-width: @sizes[tablet]) {
+            display: block;
+        }
+    }
+
+    .identifiers {
+        display: flex;
+        flex-direction: column;
     }
 
     .name {
@@ -122,47 +198,73 @@ body {
         font-weight: 800;
         text-transform: uppercase;
         font-size: 1.5em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     .symbol {
         color: @caption;
         font-weight: 600;
         font-size: 1.3em;
+        @media (min-width: @sizes[tablet]) {
+            font-weight: 400;
+            font-size: 1em;
+        }
+    }
+
+    .currentStatus {
+        display: flex;
+        flex-direction: column;
+
+        @media (min-width: @sizes[tablet]) {
+            flex-direction: row;
+            align-items: end;
+            justify-content: space-between;
+        }
     }
     .price {
         color: @type;
         text-align: right;
         font-size: 1.7em;
+        flex-grow: 1;
+
+        @media (min-width: @sizes[tablet]) {
+            text-align: left;
+        }
     }
     .groupChange {
-        text-align: right;
+        display: flex;
+        justify-content: flex-end;
         font-size: 1.3em;
         font-weight: 600;
+
+        @media (min-width: @sizes[tablet]) {
+            font-size: 1em;
+            flex-grow: 1;
+        }
     }
 
-    .open {
+    .historical {
         display: none;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 90%;
+        font-size: 0.9em;
 
         @media (min-width: @sizes[tablet]) {
             display: flex;
         }
-    }
 
-    .high {
-        display: none;
+        & .label {
+            text-transform: uppercase;
+            color: @caption;
+            font-weight: 600;
+        }
 
-        @media (min-width: @sizes[tablet]) {
-            display: flex;
+        & .value {
+            color: @type;
         }
     }
-
-    .low {
-        display: none;
-
-        @media (min-width: @sizes[tablet]) {
-            display: flex;
-        }
-    }
-
 }
 
 .trendArrow {

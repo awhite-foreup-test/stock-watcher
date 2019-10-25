@@ -15,7 +15,7 @@ var app = app || {};
 
         add: function (model, collection, options) {
             var view = new app.StockQuoteView({model: model});
-            this.$el.append(view.render().el);
+            this.$(".stockquotelist").append(view.render().el);
         }
     });
 })();

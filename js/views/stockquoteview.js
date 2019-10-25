@@ -22,6 +22,13 @@ var app = app || {};
             }
 
             this.$el.html(this.template(this.templateValues()));
+
+            let high = this.model.get("high");
+            let low = this.model.get("low");
+            let price = this.model.get("price");
+            let percentLow = 100 * (high - price) / (high - low);
+            this.$(".triangle").css("top", percentLow + "%");
+
             return this;
         },
         templateValues: function () {

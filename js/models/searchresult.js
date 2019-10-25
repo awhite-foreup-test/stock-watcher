@@ -15,6 +15,7 @@ var app = app || {};
                 keywords: this.get("keyword"),
                 apikey: ALPHA_VANTAGE_API_KEY
             });
+            console.log(url);
             return url;
         },
         parse: function (response, options) {
