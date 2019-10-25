@@ -16,11 +16,9 @@ var app = app || {};
                 symbol: this.symbol,
                 apikey: ALPHA_VANTAGE_API_KEY
             });
-            console.log(url);
             return url;
         },
         parse: function (response, options) {
-            console.log(response);
             if (!response.hasOwnProperty("Global Quote")) {
                 // What should it do?
                 alert("Failed to fetch data.");

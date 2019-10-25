@@ -15,12 +15,17 @@ var app = app || {};
                 keywords: this.get("keyword"),
                 apikey: ALPHA_VANTAGE_API_KEY
             });
-            console.log(url);
             return url;
         },
         parse: function (response, options) {
-            console.log(response);
-            if (!(response.hasOwnProperty("bestMatches") && response['bestMatches'].length > 0)) {
+            if (!response.hasOwnProperty("bestMatches")) {
+                // What should it do?
+                alert("Error");
+                return;
+            }
+            if (response['bestMatches'].length === 0) {
+                // What should it do?
+                alert("No match found.");
                 return;
             }
             let bestMatch = response["bestMatches"][0];
