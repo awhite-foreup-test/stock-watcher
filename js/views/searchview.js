@@ -6,18 +6,23 @@ var app = app || {};
 
     app.SearchView = Backbone.View.extend({
         events: {
-            'click button': 'handleClick'
+            'click button': 'handleClick',
+            'keyup input': 'handleKeyUp'
         },
-
         initialize: function () {
             this.listenTo(this.model, 'change:symbol', this.add);
         },
         handleClick: function (e) {
-            var searchTerm = this.$("input").val();
-            this.apiSearch(searchTerm);
+            this.searchInput();
         },
-        apiSearch: function (term) {
-            this.model.set({keyword: term});
+        handleKeyUp: function (e) {
+            if (e.key === "Enter") {
+                this.searchInput();
+            }
+        },
+        searchInput: function () {
+            var searchTerm = this.$("input").val();
+            this.model.set({keyword: searchTerm});
             this.model.fetch();
         },
         add: function () {
