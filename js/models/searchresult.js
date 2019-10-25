@@ -30,6 +30,9 @@ var app = app || {};
             };
             if (result.symbol.toUpperCase() === this.get("keyword").toUpperCase()) {
                 return result;
+            } else {
+                // What should it do?
+                alert("Did you mean " + result.symbol + " (" + result.name + ")?");
             }
         }
     });

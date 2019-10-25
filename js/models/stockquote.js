@@ -22,6 +22,8 @@ var app = app || {};
         parse: function (response, options) {
             console.log(response);
             if (!response.hasOwnProperty("Global Quote")) {
+                // What should it do?
+                alert("Failed to fetch data.");
                 return;
             }
             let quote = response["Global Quote"];
